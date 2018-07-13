@@ -40,14 +40,14 @@ sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
 
 # sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
 
-echo "Installing openjdk-7-jdk package" >> /home/$5/install.progress.txt
+# echo "Installing openjdk-7-jdk package" >> /home/$5/install.progress.txt
 
-sudo add-apt-repository -y ppa:openjdk-r/ppa
-sudo apt-get -y update
-sudo apt-get install -y openjdk-7-jdk
-sudo apt-get -y update --fix-missing
-sudo apt-get install -y openjdk-7-jdk
-sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
+# sudo add-apt-repository -y ppa:openjdk-r/ppa
+# sudo apt-get -y update
+# sudo apt-get install -y openjdk-7-jdk
+# sudo apt-get -y update --fix-missing
+# sudo apt-get install -y openjdk-7-jdk
+# sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
 
 echo "Installing openjdk-8-jdk package" >> /home/$5/install.progress.txt
 
@@ -101,8 +101,8 @@ sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
 # sudo apt install -y golang-go
 # sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
 
-# sudo -u $5 mkdir /home/$5/downloads
-# sudo -u $5 mkdir /home/$5/lib
+sudo -u $5 mkdir -p /home/$5/downloads
+sudo -u $5 mkdir -p /home/$5/lib
 
 # Install latest release of .NET Core
 # echo "Installing .NET" >> /home/$5/install.progress.txt
@@ -171,21 +171,15 @@ cd /home/$5/downloads
 # sudo -u $5 wget https://github.com/Microsoft/vsts-agent/releases/download/v2.109.2/vsts-agent-ubuntu.14.04-x64-2.109.2.tar.gz
 # sudo -u $5 wget http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_amd64.deb
 # sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb
-
 sudo -u $5 wget https://vstsagentpackage.azureedge.net/agent/2.134.2/vsts-agent-linux-x64-2.134.2.tar.gz
-mkdir -p /home/$5/downloads/vsts-agent
-cd /home/$5/downloads/vsts-agent
-tar zxvf /home/$5/downloads/vsts-agent-linux-x64-2.134.2.tar.gz
-
 sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
-
 
 echo "Installing VSTS Build agent package" >> /home/$5/install.progress.txt
 
 # Install VSTS agent
-sudo -u $5 mkdir /home/$5/vsts-agent
+sudo -u $5 mkdir -p /home/$5/vsts-agent
 cd /home/$5/vsts-agent
-sudo -u $5 tar xzf /home/$5/downloads/vsts-agent-ubuntu*
+sudo -u $5 tar xzf /home/$5/downloads/vsts-agent-linux*
 
 echo "LANG=en_US.UTF-8" > .env
 echo "export LANG=en_US.UTF-8" >> /home/$5/.bashrc
@@ -200,9 +194,9 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 # export JAVA_HOME_7_X64=/usr/lib/jvm/java-7-oracle
 # echo "JAVA_HOME_7_X64=/usr/lib/jvm/java-7-oracle" >> .env
 # echo "export JAVA_HOME_7_X64=/usr/lib/jvm/java-7-oracle" >> /home/$5/.bashrc
-export JAVA_HOME_7_X64=/usr/lib/jvm/java-7-openjdk-amd64
-echo "JAVA_HOME_7_X64=/usr/lib/jvm/java-7-openjdk-amd64" >> .env
-echo "export JAVA_HOME_7_X64=/usr/lib/jvm/java-7-openjdk-amd64" >> /home/$5/.bashrc
+# export JAVA_HOME_7_X64=/usr/lib/jvm/java-7-openjdk-amd64
+# echo "JAVA_HOME_7_X64=/usr/lib/jvm/java-7-openjdk-amd64" >> .env
+# echo "export JAVA_HOME_7_X64=/usr/lib/jvm/java-7-openjdk-amd64" >> /home/$5/.bashrc
 echo "JAVA_HOME_8_X64=/usr/lib/jvm/java-8-openjdk-amd64" >> .env
 echo "export JAVA_HOME_8_X64=/usr/lib/jvm/java-8-openjdk-amd64" >> /home/$5/.bashrc
 export JAVA_HOME_8_X64=/usr/lib/jvm/java-8-openjdk-amd64
@@ -229,9 +223,9 @@ echo =============================== >> /home/$5/vsts.install.log.txt 2>&1
 echo Running ./svc.sh start >> /home/$5/vsts.install.log.txt 2>&1
 
 # HACK - only need next 3 lines if installing Ruby and Rails
-sudo sed -i "/^#!\/bin\/bash/a [[ -s \"\/home\/$5\/.rvm\/scripts\/rvm\" ]] \&\& source \"\/home\/$5\/.rvm\/scripts\/rvm\" \#L1P1" ./runsvc.sh
-sudo sed -i "/L1P1/a echo \`cat .path\`:\$MY_RUBY_HOME/bin:\$GEM_HOME/bin > .mypath \#L2P2" ./runsvc.sh
-sudo sed -i "/L2P2/a cp .mypath .path" ./runsvc.sh
+# sudo sed -i "/^#!\/bin\/bash/a [[ -s \"\/home\/$5\/.rvm\/scripts\/rvm\" ]] \&\& source \"\/home\/$5\/.rvm\/scripts\/rvm\" \#L1P1" ./runsvc.sh
+# sudo sed -i "/L1P1/a echo \`cat .path\`:\$MY_RUBY_HOME/bin:\$GEM_HOME/bin > .mypath \#L2P2" ./runsvc.sh
+# sudo sed -i "/L2P2/a cp .mypath .path" ./runsvc.sh
 
 sudo -E ./svc.sh start >> /home/$5/vsts.install.log.txt 2>&1
 echo =============================== >> /home/$5/vsts.install.log.txt 2>&1
