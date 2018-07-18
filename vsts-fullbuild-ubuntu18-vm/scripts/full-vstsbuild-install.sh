@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$user=${5:-azureiotpcs}
+user=${5:-azureiotpcs}
 
 # Install Build Tools
 sudo /bin/date +%H:%M:%S > /home/$user/install.progress.txt
