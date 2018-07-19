@@ -140,7 +140,9 @@ sudo groupadd docker
 sudo usermod -aG docker $user
 sudo service docker start
 sudo systemctl enable docker
-sudo apt-get install -y docker-compose
+# Skip this step since there is an issue in golang-docker-credential-helpers
+# which was installed with docker-compose which will fail docker login.
+# sudo apt-get install -y docker-compose
 
 
 # Install Docker Engine and Compose
