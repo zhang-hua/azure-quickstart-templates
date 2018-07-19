@@ -1,0 +1,30 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vstsAccountURL": {
+      "value": "(input vsts account url)"
+    },
+    "vstsPAT": {
+      "value": "(input vsts PAT token to connect vsts pool)"
+    },
+    "vstsPoolName": {
+      "value": "(input vsts agent pool to be connected)"
+    },
+    "vstsAgentName": {
+      "value": "(input vsts agent name in the pool)"
+    },
+    "adminUsername": {
+      "value": "(admin user name of agent VM)"
+    },
+    "authenticationType": {
+      "value": "sshPublicKey"
+    },
+    "adminPasswordOrKey": {
+      "value": "(input SSH RSA public key string)"
+    },
+    "dnsLabelPrefix": {
+      "value": "(input dns label for agent VM)"
+    }
+  }
+}
