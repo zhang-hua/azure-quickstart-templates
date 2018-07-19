@@ -257,7 +257,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/zhang-hua/azure-quickstart-templates/ubuntu1804/vsts-fullbuild-ubuntu18-vm/scripts/full-vstsbuild-install.sh"
+            "https://aka.ms/azureiotpcs/full-vstsbuild-install.sh"
           ],
           "commandToExecute": "[concat('sh full-vstsbuild-install.sh',' ',parameters('vstsAccountURL'),' ',parameters('vstsPAT'),' ',parameters('vstsPoolName'),' ',parameters('vstsAgentName'),' ',parameters('adminUsername'))]"
         }
